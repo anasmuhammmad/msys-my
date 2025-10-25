@@ -1,0 +1,14 @@
+<odoo>
+  <!-- Limit the activity type dropdown to the current model (HSE) -->
+  <record id="hse_mail_activity_popup_view" model="ir.ui.view">
+    <field name="name">mail.activity.popup.hse.limit.types</field>
+    <field name="model">mail.activity</field>
+    <field name="inherit_id" ref="mail.mail_activity_view_form_popup"/>
+    <field name="priority">50</field>
+    <field name="arch" type="xml">
+      <field name="activity_type_id" position="attributes">
+        <attribute name="domain">[("res_model", "=", res_model)]</attribute>
+      </field>
+    </field>
+  </record>
+</odoo>

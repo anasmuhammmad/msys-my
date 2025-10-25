@@ -1,0 +1,10 @@
+<odoo>
+  <data noupdate="1">
+    <!-- Example HSE activity type; adjust as needed -->
+    <record id="mail_activity_type_hse_grant_approval" model="mail.activity.type">
+      <field name="name">Grant Approval</field>
+      <field name="category">default</field>
+      <field name="res_model">x_hse</field>
+    </record>
+  </data>
+</odoo>

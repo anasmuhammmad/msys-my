@@ -1,0 +1,3 @@
+<odoo>
+  <!-- Do NOT globally restrict mail.activity by name; domains belong on fields/views. -->
+</odoo>
