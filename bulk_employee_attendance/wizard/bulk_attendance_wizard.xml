@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Bulk Attendance Wizard Form View -->
+    <record id="view_bulk_attendance_wizard_form" model="ir.ui.view">
+        <field name="name">bulk.attendance.wizard.form</field>
+        <field name="model">bulk.attendance.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Bulk Employee Attendance">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="attendance_type" widget="radio" options="{'horizontal': true}"/>
+                            <field name="check_datetime"/>
+                        </group>
+                        <group>
+                            <field name="mode" invisible="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="project_id" invisible="attendance_type == 'check_out'"/>
+                            <field name="vehicle_id" invisible="attendance_type == 'check_out'"/>
+                             <field name="employee_ids" widget="many2many_tags"
+                                   options="{'color_field': 'color', 'no_create': True}"/>
+                        </group>
+                    </group>
+                    <!--<notebook>
+                        <page string="Employees">
+                            <field name="employee_ids" widget="many2many_tags"
+                                   options="{'color_field': 'color', 'no_create': True}">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="department_id"/>
+                                    <field name="job_id"/>
+                                    <field name="work_email"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook> -->
+                </sheet>
+                <footer>
+                    <button string="Create Attendance"
+                            name="action_create_attendance"
+                            type="object"
+                            class="btn-primary"
+                            data-hotkey="q"/>
+                    <button string="Cancel"
+                            name="action_cancel"
+                            type="object"
+                            class="btn-secondary"
+                            data-hotkey="x"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open the wizard -->
+    <record id="action_bulk_attendance_wizard" model="ir.actions.act_window">
+        <field name="name">Bulk Check In/Out</field>
+        <field name="res_model">bulk.attendance.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="hr_attendance.model_hr_attendance"/>
+    </record>
+
+    <!-- Menu item in Attendances -->
+    <menuitem
+        id="menu_bulk_attendance_wizard"
+        name="Bulk Check In/Out"
+        parent="hr_attendance.menu_hr_attendance_root"
+        action="action_bulk_attendance_wizard"
+        sequence="10"/>
+
+</odoo>

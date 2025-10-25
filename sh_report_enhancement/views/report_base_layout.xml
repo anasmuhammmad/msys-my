@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="sh_base_report_layout_view" model="ir.ui.view">
+		<field name="name">base.document.layout.view</field>
+		<field name="model">base.document.layout</field>
+		<field name="inherit_id" ref="web.view_base_document_layout" />
+		<field name="arch" type="xml">
+			<field name="logo" position="after">
+				<field name="sh_display_header" />
+				<field name="sh_header_image" invisible="sh_display_header == False" widget="image" />
+				<field name="sh_display_footer" />
+				<field name="sh_footer_image" invisible="sh_display_footer == False" widget="image" />
+			</field>
+		</field>
+	</record>
+	<template id="sh_external_layout_standard" inherit_id="web.external_layout_standard">
+		<xpath expr="//div[@t-att-style='report_header_style']" position="attributes">
+			<attribute name="t-if">not company.sh_display_header</attribute>
+		</xpath>
+		<xpath expr="//div[@t-att-style='report_header_style']" position="after">
+			<div t-if="company.sh_display_header" t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+				<div class="row">
+					<div class="col-12 mb-2">
+						<img style="height:175px" t-if="company.sh_header_image" t-att-src="image_data_uri(company.sh_header_image)" width="100%" alt="Logo" />
+					</div>
+				</div>
+			</div>
+		</xpath>
+		<xpath expr="//div[@t-attf-class='footer o_standard_footer o_company_#{company.id}_layout']" position="attributes">
+			<attribute name="t-if">not company.sh_display_footer</attribute>
+		</xpath>
+		<xpath expr="//div[@t-attf-class='footer o_standard_footer o_company_#{company.id}_layout']" position="after">
+			<div t-if="company.sh_display_footer" t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+				<div class="row">
+					<div class="col-12 mb-2">
+						<img t-if="company.sh_footer_image" style="height:100px" t-att-src="image_data_uri(company.sh_footer_image)" alt="Logo" width="100%" />
+					</div>
+				</div>
+			</div>
+		</xpath>
+	</template>
+	<template id="sh_external_layout_background" inherit_id="web.external_layout_striped">
+		<xpath expr="//div[@t-att-style='report_header_style']" position="attributes">
+			<attribute name="t-if">not company.sh_display_header</attribute>
+		</xpath>
+		<xpath expr="//div[@t-att-style='report_header_style']" position="after">
+			<div t-if="company.sh_display_header" t-attf-class="o_company_#{company.id}_layout header" t-att-style="report_header_style">
+				<div class="row">
+					<div class="col-12 mb-2 " style="height:100%; max-height:100%">
+						<img t-if="company.sh_header_image" style="height:175px" t-att-src="image_data_uri(company.sh_header_image)" alt="Logo" />
+					</div>
+				</div>
+			</div>
+		</xpath>
+		<xpath expr="//div[@t-attf-class='o_company_#{company.id}_layout footer o_background_footer']" position="attributes">
+			<attribute name="t-if">not company.sh_display_footer</attribute>
+		</xpath>
+		<xpath expr="//div[@t-attf-class='o_company_#{company.id}_layout footer o_background_footer']" position="after">
+			<div t-if="company.sh_display_footer" t-attf-class="o_company_#{company.id}_layout footer o_background_footer">
+				<div class="row">
+					<div class="col-12 mb-2">
+						<img t-if="company.sh_footer_image" style="height:100px" t-att-src="image_data_uri(company.sh_footer_image)" alt="Logo" width="100%" />
+					</div>
+				</div>
+			</div>
+		</xpath>
+	</template>
+	<template id="sh_external_layout_boxed" inherit_id="web.external_layout_boxed">
+		<xpath expr="//div[@t-att-style='report_header_style']" position="attributes">
+			<attribute name="t-if">not company.sh_display_header</attribute>
+		</xpath>
+		<xpath expr="//div[@t-att-style='report_header_style']" position="after">
+			<div t-if="company.sh_display_header" t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+				<div class="row">
+					<div class="col-12 mb-2">
+						<img style="height:175px" t-if="company.sh_header_image" t-att-src="image_data_uri(company.sh_header_image)" width="100%" alt="Logo" />
+					</div>
+				</div>
+			</div>
+		</xpath>
+		<xpath expr="//div[@t-attf-class='footer o_boxed_footer o_company_#{company.id}_layout']" position="attributes">
+			<attribute name="t-if">not company.sh_display_footer</attribute>
+		</xpath>
+		<xpath expr="//div[@t-attf-class='footer o_boxed_footer o_company_#{company.id}_layout']" position="after">
+			<div t-if="company.sh_display_footer" t-attf-class="footer o_boxed_footer o_company_#{company.id}_layout">
+				<div class="row">
+					<div class="col-12 mb-2">
+						<img t-if="company.sh_footer_image" style="height:100px" t-att-src="image_data_uri(company.sh_footer_image)" alt="Logo" width="100%" />
+					</div>
+				</div>
+			</div>
+		</xpath>
+	</template>
+	<template id="sh_external_layout_clean" inherit_id="web.external_layout_bold">
+		<xpath expr="//div[@t-att-style='report_header_style']" position="attributes">
+			<attribute name="t-if">not company.sh_display_header</attribute>
+		</xpath>
+		<xpath expr="//div[@t-att-style='report_header_style']" position="after">
+			<div t-if="company.sh_display_header" t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+				<div class="row">
+					<div class="col-12 mb-2">
+						<img style="height:175px" t-if="company.sh_header_image" t-att-src="image_data_uri(company.sh_header_image)" width="100%" alt="Logo" />
+					</div>
+				</div>
+			</div>
+		</xpath>
+		<xpath expr="//div[@t-attf-class='footer o_clean_footer o_company_#{company.id}_layout']" position="attributes">
+			<attribute name="t-if">not company.sh_display_footer</attribute>
+		</xpath>
+		<xpath expr="//div[@t-attf-class='footer o_clean_footer o_company_#{company.id}_layout']" position="after">
+			<div t-if="company.sh_display_footer" t-attf-class="footer o_clean_footer o_company_#{company.id}_layout">
+				<div class="row">
+					<div class="col-12 mb-2">
+						<img t-if="company.sh_footer_image" style="height:100px" t-att-src="image_data_uri(company.sh_footer_image)" alt="Logo" width="100%" />
+					</div>
+				</div>
+			</div>
+		</xpath>
+	</template>
+	<template id="sh_external_layout_din5008" inherit_id="l10n_din5008.external_layout_din5008">
+		<!-- Header -->
+		<xpath expr="//div//div[1]" position="attributes">
+			<attribute name="t-if">not company.sh_display_header</attribute>
+		</xpath>
+		<xpath expr="//div//div[1]" position="after">
+			<div t-if="company.sh_display_header" t-attf-class="header din_page o_company_#{company.id}_layout #{'din_page_pdf' if report_type == 'pdf' else ''}">
+				<div class="row">
+					<div class="col-12">
+						<img style="height:155px" t-if="company.sh_header_image" t-att-src="image_data_uri(company.sh_header_image)" width="100%" alt="Logo" />
+					</div>
+				</div>
+			</div>
+		</xpath>
+
+		<!-- Footer -->
+		<xpath expr="//div[1]//div[4]" position="attributes">
+			<attribute name="t-if">not company.sh_display_footer</attribute>
+		</xpath>
+
+		<xpath expr="//div[1]//div[4]" position="after">
+			<div t-if="company.sh_display_footer" t-attf-class="din_page footer o_company_#{company.id}_layout #{'din_page_pdf' if report_type == 'pdf' else ''}">
+				<div class="row">
+					<div class="col-12 mb-2">
+						<img t-if="company.sh_footer_image" style="height:100px" t-att-src="image_data_uri(company.sh_footer_image)" alt="Logo" width="100%" />
+					</div>
+				</div>
+			</div>
+		</xpath>
+	</template>
+	
+</odoo>

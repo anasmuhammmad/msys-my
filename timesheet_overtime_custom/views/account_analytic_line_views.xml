@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="account_analytic_line_form_inherit_overtime" model="ir.ui.view">
+            <field name="name">account.analytic.line.form.inherit.overtime</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='unit_amount']" position="after">
+                    <field name="minimum_hours"/>
+                    <field name="overtime_hours" readonly="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

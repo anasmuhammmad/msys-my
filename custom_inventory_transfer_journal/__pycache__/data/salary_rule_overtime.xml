@@ -1,0 +1,14 @@
+<odoo>
+    <record id="salary_rule_overtime" model="hr.salary.rule">
+        <field name="name">Overtime Allowance</field>
+        <field name="code">OVT</field>
+        <field name="sequence">10</field>
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="condition_select">always</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+            result = contract.overtime_rate * payslip.overtime_hours
+        </field>
+        <field name="appears_on_payslip">True</field>
+    </record>
+</odoo>
