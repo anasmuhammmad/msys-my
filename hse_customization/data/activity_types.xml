@@ -1,3 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- Ensure the Grant Approval activity type exists -->
+    <record id="mail_activity_type_grant_approval" model="mail.activity.type">
+        <field name="name">Grant Approval</field>
+        <field name="category">default</field>
+        <field name="delay_count">0</field>
+        <field name="delay_unit">days</field>
+        <field name="res_model_id" eval="False"/>
+        <field name="summary">Grant Approval for HSE</field>
+        <field name="default_user_id" eval="False"/>
+        <field name="sequence">10</field>
+        <field name="icon">fa-check-square-o</field>
+        <field name="is_hse_type" eval="True"/>
+    </record>
 </odoo>

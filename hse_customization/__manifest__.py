@@ -6,7 +6,8 @@
   'depends': ['mail'],
   'data': [
     # 'security/security.xml',
-    'security/ir_rule.xml',
+    # Disabled invalid rule record that lacked model_id and crashed install
+    # 'security/ir_rule.xml',
     'data/activity_types.xml',
     'views/hse_views.xml'
   ],
