@@ -1,7 +1,6 @@
 <odoo>
+  <!-- Deactivate previously restrictive rule so it doesn't affect global Activities -->
   <record id="rule_hse_grant_approval_only" model="ir.rule">
-    <field name="name">Only 'Grant Approval' activities</field>
-    <field name="model_id" ref="mail.model_mail_activity"/>
-    <field name="domain_force">[('activity_type_id.name', '=', 'Grant Approval')]</field>
+    <field name="active">0</field>
   </record>
 </odoo>
