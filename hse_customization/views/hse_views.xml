@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Placeholder to satisfy manifest reference; add views as needed -->
+    <!-- Window action for Activities filtered to HSE types -->
+    <record id="action_hse_activities" model="ir.actions.act_window">
+        <field name="name">HSE Activities</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">mail.activity</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[('activity_type_id', 'in', [ref('hse_customization.mail_activity_type_hse_incident_review'), ref('hse_customization.mail_activity_type_hse_audit'), ref('hse_customization.mail_activity_type_hse_training')])]</field>
+    </record>
+
+    <!-- Menu item under HSE; update parent to your real HSE menu id -->
+    <menuitem id="menu_hse_root" name="HSE" sequence="50"/>
+    <menuitem id="menu_hse_activities" name="Activities" parent="menu_hse_root" action="action_hse_activities" sequence="10"/>
 </odoo>

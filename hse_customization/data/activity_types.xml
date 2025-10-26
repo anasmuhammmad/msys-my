@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Placeholder to satisfy manifest reference; add records as needed -->
+    <!-- Define HSE-specific activity types -->
+    <record id="mail_activity_type_hse_incident_review" model="mail.activity.type">
+        <field name="name">HSE Incident Review</field>
+        <field name="category">default</field>
+    </record>
+    <record id="mail_activity_type_hse_audit" model="mail.activity.type">
+        <field name="name">HSE Audit</field>
+        <field name="category">default</field>
+    </record>
+    <record id="mail_activity_type_hse_training" model="mail.activity.type">
+        <field name="name">HSE Training</field>
+        <field name="category">default</field>
+    </record>
 </odoo>
