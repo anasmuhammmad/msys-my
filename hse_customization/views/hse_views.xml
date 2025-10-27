@@ -1,3 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!--
+        Do NOT inherit Studio view ids (e.g., studio_customization.x_hse_view_form)
+        as they may not exist on all databases. Keep only safe view customizations.
+    -->
+
+    <!-- Add the is_hse_type field to activity type form -->
+    <record id="view_mail_activity_type_form_inherit_hse" model="ir.ui.view">
+        <field name="name">mail.activity.type.form.inherit.hse</field>
+        <field name="model">mail.activity.type</field>
+        <field name="inherit_id" ref="mail.mail_activity_type_view_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="is_hse_type"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Add the is_hse_type field to activity type tree -->
+    <record id="view_mail_activity_type_tree_inherit_hse" model="ir.ui.view">
+        <field name="name">mail.activity.type.tree.inherit.hse</field>
+        <field name="model">mail.activity.type</field>
+        <field name="inherit_id" ref="mail.mail_activity_type_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="is_hse_type"/>
+            </field>
+        </field>
+    </record>
+
+    <!--
+        Filtering of activity types for x_hse is handled in Python via
+        domain on mail.activity.activity_type_id and onchange, so we don't
+        need to inherit the activity form here.
+    -->
 </odoo>

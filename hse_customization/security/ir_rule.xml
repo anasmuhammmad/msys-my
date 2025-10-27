@@ -1,6 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <!-- Deactivate previously restrictive rule so it doesn't affect global Activities -->
-  <record id="rule_hse_grant_approval_only" model="ir.rule">
-    <field name="active">0</field>
-  </record>
+  <!-- NOTE: This file intentionally left without ir.rule records.
+       The previous broken record created an ir.rule without required fields
+       leading to NOT NULL violation on model_id. Keep for future rules if needed. -->
 </odoo>
